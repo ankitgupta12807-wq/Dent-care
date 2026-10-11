@@ -1,238 +1,363 @@
-            <p>Strict appointment adherence ensures you spend your time getting treated, not waiting.</p>
-          </div>
-        </div>
-        <div class="feature-item">
-          <div class="feature-icon"><i class="fas fa-microscope"></i></div>
-          <div class="feature-text">
-            <h3>Advanced Technology</h3>
-            <p>Digital intraoral scanners and low-radiation digital X-rays for precise diagnosis.</p>
-          </div>
-        </div>
-        <div class="feature-item">
-          <div class="feature-icon"><i class="fas fa-hand-holding-heart"></i></div>
-          <div class="feature-text">
-            <h3>Painless Dentistry</h3>
-            <p>Comfort-first care with gentle numbing techniques and anxious-patient support.</p>
-          </div>
-        </div>
-        <div class="feature-item">
-          <div class="feature-icon"><i class="fas fa-file-invoice-dollar"></i></div>
-          <div class="feature-text">
-            <h3>Upfront Pricing</h3>
-            <p>Complete cost clarity before treatment starts—no surprise charges or hidden fees.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- APPOINTMENT FORM -->
-  <section id="appointment">
-    <div class="container">
-      <div class="appointment">
-        <div class="appointment-grid">
-          <div>
-            <div class="section-subhead">Book a Visit</div>
-            <h2>Schedule Your Appointment</h2>
-            <form id="bookingForm" onsubmit="handleFormSubmit(event)">
-              <div class="form-group">
-                <label for="fullName">Full Name</label>
-                <input type="text" id="fullName" name="name" placeholder="e.g. Rahul Verma" required>
-              </div>
-              <div class="form-group">
-                <label for="phone">Phone Number</label>
-                <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210" pattern="[0-9+ -]{10,14}" required>
-              </div>
-              <div class="form-group">
-                <label for="service">Select Treatment</label>
-                <select id="service" name="service" required>
-                  <option value="" disabled selected>Choose a treatment...</option>
-                  <option value="cleaning">Teeth Cleaning & Polish</option>
-                  <option value="whitening">Teeth Whitening</option>
-                  <option value="rct">Root Canal Therapy (RCT)</option>
-                  <option value="implants">Dental Implants</option>
-                  <option value="checkup">Routine Consultation / Checkup</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="date">Preferred Date</label>
-                <input type="date" id="date" name="date" required>
-              </div>
-              <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 8px;">
-                <i class="fas fa-calendar-check"></i> Confirm Booking
-              </button>
-              <p class="form-message" id="formMessage">Thank you! Your appointment request has been received. Our team will call you shortly to confirm.</p>
-            </form>
-          </div>
-
-          <div class="appointment-info">
-            <h3>Need urgent dental relief?</h3>
-            <p>We accommodate emergency walk-ins during open clinic hours. Call us directly or message our team on WhatsApp for prompt assistance.</p>
-            <div class="appointment-note">
-              <strong>Clinic Hours:</strong><br>
-              Monday – Saturday: 9:30 AM – 8:00 PM<br>
-              Sunday: 10:00 AM – 2:00 PM
-            </div>
-            <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-              <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">
-                <i class="fab fa-whatsapp"></i> Chat on WhatsApp
-              </a>
-              <a href="tel:+919876543210" class="btn btn-outline">
-                <i class="fas fa-phone"></i> Call Direct
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- REVIEWS -->
-  <section id="reviews" style="background: var(--off-white);">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-subhead">Testimonials</div>
-        <h2>What Our Patients Say</h2>
-        <p>Real feedback from patients who trusted us with their smiles.</p>
-      </div>
-      <div class="reviews-grid">
-        <div class="review-card">
-          <div class="review-stars">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-          </div>
-          <p class="review-text">"I was terrified of getting a root canal, but Dr. Sharma made the entire procedure completely painless. The clinic hygiene is top-notch!"</p>
-          <div class="review-author">— Ananya Sen, New Delhi</div>
-        </div>
-        <div class="review-card">
-          <div class="review-stars">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-          </div>
-          <p class="review-text">"Very professional and punctual. They explain the costs and procedures upfront without trying to upsell unnecessary work. Highly recommended."</p>
-          <div class="review-author">— Rajesh Kumar, Bengaluru</div>
-        </div>
-        <div class="review-card">
-          <div class="review-stars">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-          </div>
-          <p class="review-text">"Got in-office whitening done right before my brother's wedding. Noticeable difference in just one session, and zero sensitivity afterward."</p>
-          <div class="review-author">— Priya Mehta, Mumbai</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-subhead">Find Us</div>
-        <h2>Visit Our Clinic</h2>
-      </div>
-      <div class="contact-grid">
-        <div>
-          <div class="contact-item">
-            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
-            <div class="contact-details">
-              <h4>Clinic Address</h4>
-              <p>Suite 204, Green Park Avenue, Near Metro Pillar 12<br>Connaught Place, New Delhi 110001</p>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
-            <div class="contact-details">
-              <h4>Phone</h4>
-              <p><a href="tel:+919876543210">+91 98765 43210</a></p>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
-            <div class="contact-details">
-              <h4>Email</h4>
-              <p><a href="mailto:care@dentcareclinic.in">care@dentcareclinic.in</a></p>
-            </div>
-          </div>
-        </div>
-        <div class="map-container">
-          <iframe 
-            title="DentCare Clinic Location Map"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14008.114876615568!2d77.2144!3d28.6328!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd37b0493863%3A0x6b1d120a16b088e8!2sConnaught%20Place%2C%20New%20Delhi%2C%20Delhi%20110001!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin" 
-            loading="lazy" 
-            referrerpolicy="no-referrer-when-downgrade">
-          </iframe>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <div class="footer-logo">
-            <i class="fas fa-tooth"></i>
-            DentCare
-          </div>
-          <p>Delivering high-precision, compassionate dental treatments with international sterilization and safety standards.</p>
-        </div>
-        <div class="footer-links">
-          <h4>Treatments</h4>
-          <ul>
-            <li><a href="#services">Ultrasonic Cleaning</a></li>
-            <li><a href="#services">Teeth Whitening</a></li>
-            <li><a href="#services">Root Canal (RCT)</a></li>
-            <li><a href="#services">Dental Implants</a></li>
-          </ul>
-        </div>
-        <div class="footer-links">
-          <h4>Navigation</h4>
-          <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About Us</a></li>
-            <li><a href="#reviews">Patient Stories</a></li>
-            <li><a href="#contact">Contact & Map</a></li>
-          </ul>
-        </div>
-        <div class="footer-contact">
-          <h4>Get in Touch</h4>
-          <p><i class="fas fa-phone-alt"></i> +91 98765 43210</p>
-          <p><i class="fas fa-envelope"></i> care@dentcareclinic.in</p>
-          <p><i class="fas fa-clock"></i> Mon–Sat: 9:30 AM – 8:00 PM</p>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <div>&copy; 2026 DentCare Clinic. All rights reserved.</div>
-        <div>Designed for clean patient experience &amp; accessibility.</div>
-      </div>
-    </div>
-  </footer>
-
-  <!-- SCRIPT -->
+```html
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Flipkart Online Shopping - Big Billion Deals</title>
+  <meta name="description" content="Shop Electronics, Fashion, Mobiles, Appliances, and more on Flipkart with Best Deals, Assured Quality, and Fast Delivery.">
+  
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
   <script>
-    // Mobile navigation toggle
-    const menuToggle = document.getElementById('menuToggle');
-    const navLinks = document.getElementById('navLinks');
-
-    menuToggle.addEventListener('click', () => {
-      const isExpanded = navLinks.classList.toggle('active');
-      menuToggle.setAttribute('aria-expanded', isExpanded);
-    });
-
-    // Close menu when clicking any nav link on mobile
-    document.querySelectorAll('.nav-links a').forEach(link => {
-      link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
-        menuToggle.setAttribute('aria-expanded', 'false');
-      });
-    });
-
-    // Client-side form submission demo handler
-    function handleFormSubmit(event) {
-      event.preventDefault();
-      const formMessage = document.getElementById('formMessage');
-      formMessage.classList.add('success');
-      event.target.reset();
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            fkBlue: '#2874f0',
+            fkDarkBlue: '#1a5bc4',
+            fkYellow: '#ffe500',
+            fkOrange: '#fb641b',
+            fkYellowBtn: '#ff9f00',
+            fkGreen: '#388e3c',
+            fkBg: '#f1f3f6'
+          },
+          fontFamily: {
+            sans: ['Inter', 'Roboto', 'sans-serif'],
+          },
+          boxShadow: {
+            fkCard: '0 1px 4px 0 rgba(0, 0, 0, 0.08)',
+            fkHover: '0 4px 16px 0 rgba(0, 0, 0, 0.14)',
+          }
+        }
+      }
     }
   </script>
-</body>
-</html>
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f1f3f6;
+    }
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    .fk-assured-tag {
+      background: linear-gradient(90deg, #1846b0 0%, #2874f0 100%);
+      color: #ffe500;
+      font-style: italic;
+      font-weight: 800;
+    }
+    @keyframes pulseSoft {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.75; }
+    }
+    .pulse-soft {
+      animation: pulseSoft 2s infinite ease-in-out;
+    }
+    /* Toast styles */
+    #toastContainer {
+      position: fixed;
+      bottom: 75px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 100;
+    }
+  </style>
+</head>
+<body class="text-slate-800 antialiased min-h-screen pb-20 md:pb-12 flex flex-col justify-between">
+
+  <!-- Top Blue Flipkart Header -->
+  <header class="sticky top-0 z-40 bg-fkBlue text-white shadow-md">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 py-2.5 sm:py-3 flex items-center justify-between gap-2 sm:gap-4">
+      
+      <!-- Logo Section -->
+      <a href="#" onclick="filterCategory('all'); return false;" class="flex flex-col items-start leading-none group flex-shrink-0">
+        <span class="text-xl sm:text-2xl font-black italic tracking-wide text-white group-hover:opacity-95 flex items-center">
+          Flipkart
+        </span>
+        <span class="text-[10px] sm:text-[11px] italic font-semibold text-slate-100 flex items-center gap-0.5">
+          Explore <span class="text-fkYellow font-bold flex items-center">Plus <i class="fa-solid fa-plus text-[9px] ml-0.5"></i></span>
+        </span>
+      </a>
+
+      <!-- Search Bar with Live Dropdown -->
+      <div class="flex-1 max-w-2xl relative">
+        <div class="relative flex items-center">
+          <input 
+            type="text" 
+            id="searchInput"
+            placeholder="Search for Products, Brands and More" 
+            autocomplete="off"
+            class="w-full pl-4 pr-10 py-2 sm:py-2.5 rounded-sm sm:rounded-md bg-white text-slate-800 text-xs sm:text-sm placeholder-slate-400 focus:outline-none shadow-inner"
+            oninput="handleSearch(this.value)"
+            onfocus="showSearchDropdown()"
+          />
+          <button id="searchBtn" class="absolute right-3 text-fkBlue text-sm sm:text-base hover:opacity-80">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </div>
+
+        <!-- Autocomplete Suggestions Dropdown -->
+        <div id="searchSuggestions" class="hidden absolute top-full left-0 right-0 mt-1 bg-white rounded-md shadow-2xl border border-slate-200 overflow-hidden z-50 text-slate-800 text-xs sm:text-sm">
+          <div class="p-2 bg-slate-50 border-b border-slate-100 text-[11px] font-semibold text-slate-500 uppercase tracking-wider flex justify-between">
+            <span>Trending Searches</span>
+            <button onclick="hideSearchDropdown()" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark"></i></button>
+          </div>
+          <div id="suggestionsList" class="divide-y divide-slate-100 max-h-64 overflow-y-auto">
+            <!-- Populated via JS -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Action Buttons (Desktop) -->
+      <div class="flex items-center gap-3 sm:gap-6 text-sm font-semibold flex-shrink-0">
+        
+        <!-- Login / User Button -->
+        <button onclick="toggleLoginModal()" class="hidden md:inline-flex items-center gap-1.5 px-6 py-1.5 bg-white text-fkBlue rounded-sm font-bold shadow-sm hover:bg-slate-100 transition-colors">
+          <i class="fa-regular fa-user text-xs"></i> Login
+        </button>
+
+        <!-- Become a Seller Link -->
+        <a href="#seller" onclick="showToast('Seller registration portal opens soon!'); return false;" class="hidden lg:inline text-white hover:text-fkYellow text-xs font-medium">
+          Become a Seller
+        </a>
+
+        <!-- Wishlist Button -->
+        <button onclick="showWishlistModal()" class="hidden sm:inline-flex items-center gap-1.5 text-white hover:text-fkYellow transition-colors relative" title="Wishlist">
+          <i class="fa-regular fa-heart text-base sm:text-lg"></i>
+          <span class="hidden md:inline text-xs font-semibold">Wishlist</span>
+          <span id="wishlistBadge" class="hidden absolute -top-1.5 -right-2 bg-fkYellow text-fkBlue text-[10px] font-black w-4 h-4 rounded-full flex items-center justify-center">0</span>
+        </button>
+
+        <!-- Cart Button -->
+        <button onclick="toggleCartDrawer(true)" class="flex items-center gap-2 text-white hover:text-fkYellow transition-colors relative" aria-label="Shopping Cart">
+          <div class="relative">
+            <i class="fa-solid fa-cart-shopping text-base sm:text-lg"></i>
+            <span id="cartBadge" class="absolute -top-2 -right-2 bg-fkYellow text-fkBlue font-black text-[10px] w-4 h-4 rounded-full flex items-center justify-center shadow-sm">0</span>
+          </div>
+          <span class="hidden sm:inline text-sm font-semibold">Cart</span>
+        </button>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Categories Sub-Navbar (Horizontal scrolling on mobile) -->
+  <nav class="bg-white border-b border-slate-200 sticky top-[52px] sm:top-[57px] z-30 shadow-sm">
+    <div class="max-w-7xl mx-auto px-2 sm:px-4">
+      <div class="flex items-center justify-start sm:justify-between overflow-x-auto no-scrollbar py-2 sm:py-3 gap-6 sm:gap-8 text-center text-xs font-medium text-slate-700">
+        
+        <button onclick="filterCategory('all')" class="category-tab flex-shrink-0 flex flex-col items-center gap-1 group text-fkBlue font-bold" data-cat="all">
+          <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-blue-50 text-fkBlue flex items-center justify-center text-base sm:text-lg group-hover:scale-110 transition-transform">
+            <i class="fa-solid fa-border-all"></i>
+          </div>
+          <span>All Deals</span>
+        </button>
+
+        <button onclick="filterCategory('mobiles')" class="category-tab flex-shrink-0 flex flex-col items-center gap-1 group" data-cat="mobiles">
+          <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center text-base sm:text-lg group-hover:scale-110 transition-transform">
+            <i class="fa-solid fa-mobile-screen-button"></i>
+          </div>
+          <span>Mobiles</span>
+        </button>
+
+        <button onclick="filterCategory('electronics')" class="category-tab flex-shrink-0 flex flex-col items-center gap-1 group" data-cat="electronics">
+          <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-amber-50 text-amber-600 flex items-center justify-center text-base sm:text-lg group-hover:scale-110 transition-transform">
+            <i class="fa-solid fa-laptop"></i>
+          </div>
+          <span>Electronics</span>
+        </button>
+
+        <button onclick="filterCategory('fashion')" class="category-tab flex-shrink-0 flex flex-col items-center gap-1 group" data-cat="fashion">
+          <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-pink-50 text-pink-600 flex items-center justify-center text-base sm:text-lg group-hover:scale-110 transition-transform">
+            <i class="fa-solid fa-shirt"></i>
+          </div>
+          <span>Fashion</span>
+        </button>
+
+        <button onclick="filterCategory('home')" class="category-tab flex-shrink-0 flex flex-col items-center gap-1 group" data-cat="home">
+          <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-teal-50 text-teal-600 flex items-center justify-center text-base sm:text-lg group-hover:scale-110 transition-transform">
+            <i class="fa-solid fa-couch"></i>
+          </div>
+          <span>Home & Living</span>
+        </button>
+
+        <button onclick="filterCategory('appliances')" class="category-tab flex-shrink-0 flex flex-col items-center gap-1 group" data-cat="appliances">
+          <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-purple-50 text-purple-600 flex items-center justify-center text-base sm:text-lg group-hover:scale-110 transition-transform">
+            <i class="fa-solid fa-tv"></i>
+          </div>
+          <span>Appliances</span>
+        </button>
+
+        <button onclick="filterCategory('beauty')" class="category-tab flex-shrink-0 flex flex-col items-center gap-1 group" data-cat="beauty">
+          <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-rose-50 text-rose-600 flex items-center justify-center text-base sm:text-lg group-hover:scale-110 transition-transform">
+            <i class="fa-solid fa-spray-can-sparkles"></i>
+          </div>
+          <span>Beauty & Toys</span>
+        </button>
+
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Store Content Body -->
+  <main class="max-w-7xl mx-auto px-2 sm:px-4 py-3 sm:py-5 w-full space-y-4">
+
+    <!-- Promotional Hero Slider -->
+    <div class="relative rounded-lg overflow-hidden shadow-fkCard bg-white">
+      <div id="carouselWrapper" class="relative w-full h-44 sm:h-64 md:h-80 overflow-hidden">
+        
+        <!-- Slide 1 -->
+        <div class="carousel-slide absolute inset-0 transition-opacity duration-700 opacity-100 flex items-center justify-between px-6 sm:px-12 bg-gradient-to-r from-blue-700 via-fkBlue to-cyan-500 text-white">
+          <div class="space-y-2 sm:space-y-4 max-w-md">
+            <span class="inline-block px-2.5 py-1 rounded bg-fkYellow text-fkBlue font-black text-[10px] sm:text-xs tracking-wider uppercase">
+              Big Billion Days Special
+            </span>
+            <h2 class="text-xl sm:text-3xl md:text-4xl font-extrabold leading-tight">
+              Flagship Smartphones <br><span class="text-fkYellow">Up to 45% OFF</span>
+            </h2>
+            <p class="text-xs sm:text-sm text-blue-100 hidden sm:block">Exchange offers, no-cost EMI, and instant bank discounts on Top Brands.</p>
+            <button onclick="filterCategory('mobiles')" class="px-4 sm:px-6 py-2 rounded-sm bg-white text-fkBlue font-bold text-xs sm:text-sm shadow-md hover:bg-slate-100 transition-transform hover:scale-105">
+              Explore Deals <i class="fa-solid fa-arrow-right ml-1"></i>
+            </button>
+          </div>
+          <div class="hidden sm:flex items-center justify-center pr-4">
+            <i class="fa-solid fa-mobile-screen text-7xl md:text-9xl text-white/30 drop-shadow-xl animate-pulse"></i>
+          </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="carousel-slide absolute inset-0 transition-opacity duration-700 opacity-0 flex items-center justify-between px-6 sm:px-12 bg-gradient-to-r from-purple-800 via-indigo-700 to-pink-600 text-white">
+          <div class="space-y-2 sm:space-y-4 max-w-md">
+            <span class="inline-block px-2.5 py-1 rounded bg-pink-300 text-purple-950 font-black text-[10px] sm:text-xs tracking-wider uppercase">
+              Mega Fashion Fest
+            </span>
+            <h2 class="text-xl sm:text-3xl md:text-4xl font-extrabold leading-tight">
+              Trends & Footwear <br><span class="text-pink-200">50 - 80% OFF</span>
+            </h2>
+            <p class="text-xs sm:text-sm text-purple-100 hidden sm:block">Puma, Nike, Allen Solly & Premium ethnic wear collections.</p>
+            <button onclick="filterCategory('fashion')" class="px-4 sm:px-6 py-2 rounded-sm bg-white text-purple-900 font-bold text-xs sm:text-sm shadow-md hover:bg-slate-100 transition-transform hover:scale-105">
+              Shop Fashion <i class="fa-solid fa-arrow-right ml-1"></i>
+            </button>
+          </div>
+          <div class="hidden sm:flex items-center justify-center pr-4">
+            <i class="fa-solid fa-bag-shopping text-7xl md:text-9xl text-white/30 drop-shadow-xl"></i>
+          </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="carousel-slide absolute inset-0 transition-opacity duration-700 opacity-0 flex items-center justify-between px-6 sm:px-12 bg-gradient-to-r from-amber-600 via-orange-600 to-rose-700 text-white">
+          <div class="space-y-2 sm:space-y-4 max-w-md">
+            <span class="inline-block px-2.5 py-1 rounded bg-amber-200 text-amber-950 font-black text-[10px] sm:text-xs tracking-wider uppercase">
+              Best of Electronics
+            </span>
+            <h2 class="text-xl sm:text-3xl md:text-4xl font-extrabold leading-tight">
+              Laptops & Audio gear <br><span class="text-amber-200">From ₹999</span>
+            </h2>
+            <p class="text-xs sm:text-sm text-orange-100 hidden sm:block">Noise-cancelling headphones, gaming rigs, and high-speed SSDs.</p>
+            <button onclick="filterCategory('electronics')" class="px-4 sm:px-6 py-2 rounded-sm bg-white text-orange-900 font-bold text-xs sm:text-sm shadow-md hover:bg-slate-100 transition-transform hover:scale-105">
+              Grab Audio & Tech <i class="fa-solid fa-arrow-right ml-1"></i>
+            </button>
+          </div>
+          <div class="hidden sm:flex items-center justify-center pr-4">
+            <i class="fa-solid fa-headphones-simple text-7xl md:text-9xl text-white/30 drop-shadow-xl"></i>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Carousel Arrows -->
+      <button onclick="prevSlide()" class="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-12 bg-white/80 hover:bg-white text-slate-800 rounded-r shadow-md flex items-center justify-center focus:outline-none transition-colors">
+        <i class="fa-solid fa-chevron-left text-sm"></i>
+      </button>
+      <button onclick="nextSlide()" class="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-12 bg-white/80 hover:bg-white text-slate-800 rounded-l shadow-md flex items-center justify-center focus:outline-none transition-colors">
+        <i class="fa-solid fa-chevron-right text-sm"></i>
+      </button>
+    </div>
+
+    <!-- Deals of the Day Flash Header with Countdown -->
+    <div class="bg-white rounded-lg p-3 sm:p-4 shadow-fkCard flex flex-col sm:flex-row sm:items-center justify-between gap-3 border border-slate-100">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full bg-rose-50 text-rose-600 flex items-center justify-center text-lg">
+          <i class="fa-solid fa-bolt animate-pulse"></i>
+        </div>
+        <div>
+          <h2 class="text-base sm:text-lg font-bold text-slate-900 flex items-center gap-2">
+            Deals of the Day 
+            <span class="text-xs font-semibold px-2 py-0.5 rounded bg-rose-100 text-rose-700">LIMITED PERIOD</span>
+          </h2>
+          <div class="text-xs text-slate-500 flex items-center gap-1.5 mt-0.5">
+            <i class="fa-regular fa-clock text-slate-400"></i>
+            <span>Ends in:</span>
+            <span id="countdownTimer" class="font-mono font-bold text-slate-800 text-xs bg-slate-100 px-2 py-0.5 rounded">05h : 24m : 18s</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Filter / Sort Controls Bar -->
+      <div class="flex items-center gap-2 self-end sm:self-center">
+        <label for="sortBySelect" class="text-xs text-slate-500 font-medium hidden sm:inline">Sort By:</label>
+        <select id="sortBySelect" onchange="applySorting(this.value)" class="text-xs bg-slate-50 border border-slate-200 rounded px-2.5 py-1.5 focus:outline-none focus:ring-1 focus:ring-fkBlue font-medium text-slate-700">
+          <option value="popularity">Popularity</option>
+          <option value="priceLow">Price: Low to High</option>
+          <option value="priceHigh">Price: High to Low</option>
+          <option value="discount">Biggest Discount</option>
+        </select>
+        <button onclick="resetFilters()" class="text-xs text-fkBlue hover:underline font-semibold px-2">Reset</button>
+      </div>
+    </div>
+
+    <!-- Active Filter Chips -->
+    <div id="filterStatus" class="hidden flex items-center justify-between bg-blue-50/70 border border-blue-100 px-3 py-2 rounded text-xs text-fkBlue font-medium">
+      <span id="filterStatusText">Showing results for All Categories</span>
+      <button onclick="filterCategory('all')" class="text-slate-500 hover:text-rose-600 font-bold ml-2">Clear Filter &times;</button>
+    </div>
+
+    <!-- Products Showcase Grid -->
+    <section>
+      <div id="productsGrid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2.5 sm:gap-3">
+        <!-- Products populated dynamically by renderProducts() -->
+      </div>
+
+      <!-- No Products Found Message -->
+      <div id="noProductsFound" class="hidden bg-white rounded-lg p-12 text-center shadow-fkCard border border-slate-100">
+        <i class="fa-solid fa-box-open text-5xl text-slate-300 mb-3"></i>
+        <h3 class="text-base font-bold text-slate-800">No matching products found</h3>
+        <p class="text-xs text-slate-500 mt-1">Try checking your spelling or use more general terms.</p>
+        <button onclick="filterCategory('all')" class="mt-4 px-4 py-2 bg-fkBlue text-white text-xs font-bold rounded shadow-sm">View All Deals</button>
+      </div>
+    </section>
+
+    <!-- Why Shop on Flipkart Features Strip -->
+    <section class="bg-white rounded-lg p-4 sm:p-6 shadow-fkCard border border-slate-100">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+        <div class="flex flex-col items-center p-2">
+          <i class="fa-solid fa-truck-fast text-2xl text-fkBlue mb-2"></i>
+          <h4 class="text-xs sm:text-sm font-bold text-slate-800">Free & Fast Delivery</h4>
+          <p class="text-[11px] text-slate-500 mt-0.5">On orders above ₹499 with Plus</p>
+        </div>
+        <div class="flex flex-col items-center p-2">
+          <i class="fa-solid fa-rotate-left text-2xl text-fkGreen mb-2"></i>
+          <h4 class="text-xs sm:text-sm font-bold text-slate-800">7-Day Easy Returns</h4>
+          <p class="text-[11px] text-slate-500 mt-0.5">Hassle-free doorstep pickup</p>
+        </div>
+        <div class="flex flex-col items-center p-2">
+          <i class="fa-solid fa-shield-halved text-2xl text-amber-500 mb-2"></i>
+          <h4 class="text-xs sm:text-sm font-bold text-slate-800">100% Authentic</h4>
+          <p class="text-[11px] text-slate-500 mt-0.5">Verified Flipkart Assured sellers</p>
+        </div>
+        <div class="flex flex-col items-center p-2">
+          <i class="fa-solid fa-credit-card text-2xl text-rose-500 mb-2"></i>
+          <h4 class="text-xs sm
