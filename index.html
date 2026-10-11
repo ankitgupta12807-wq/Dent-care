@@ -1,363 +1,538 @@
-```html
-<!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Flipkart Online Shopping - Big Billion Deals</title>
-  <meta name="description" content="Shop Electronics, Fashion, Mobiles, Appliances, and more on Flipkart with Best Deals, Assured Quality, and Fast Delivery.">
-  
-  <!-- Fonts & Icons -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            fkBlue: '#2874f0',
-            fkDarkBlue: '#1a5bc4',
-            fkYellow: '#ffe500',
-            fkOrange: '#fb641b',
-            fkYellowBtn: '#ff9f00',
-            fkGreen: '#388e3c',
-            fkBg: '#f1f3f6'
-          },
-          fontFamily: {
-            sans: ['Inter', 'Roboto', 'sans-serif'],
-          },
-          boxShadow: {
-            fkCard: '0 1px 4px 0 rgba(0, 0, 0, 0.08)',
-            fkHover: '0 4px 16px 0 rgba(0, 0, 0, 0.14)',
-          }
-        }
+```react
+import React, { useState, useEffect, useMemo } from 'react';
+import {
+  ShoppingBag,
+  ShoppingCart,
+  Heart,
+  Search,
+  User,
+  Star,
+  CheckCircle2,
+  Clock,
+  ChevronRight,
+  ChevronLeft,
+  X,
+  Filter,
+  Eye,
+  SlidersHorizontal,
+  CreditCard,
+  Truck,
+  ShieldCheck,
+  RotateCcw,
+  Sparkles,
+  ArrowRight,
+  Percent,
+  Menu,
+  Lock,
+  Mail,
+  Key,
+  Facebook,
+  Chrome,
+  Apple,
+  Trash2,
+  Plus,
+  Minus,
+  Check,
+  Tag,
+  AlertCircle
+} from 'lucide-react';
+
+const MOCK_PRODUCTS = [
+  {
+    id: 1,
+    name: 'Aura SoundPro Wireless Noise-Cancelling Headphones',
+    category: 'Electronics',
+    price: 249.99,
+    originalPrice: 329.99,
+    rating: 4.8,
+    reviewsCount: 428,
+    badge: 'Deal of the Day',
+    dealEndsInHours: 7,
+    inStock: true,
+    colors: ['#0f172a', '#e2e8f0', '#b45309'],
+    colorNames: ['Midnight Slate', 'Arctic Silver', 'Cognac Tan'],
+    sizes: ['Standard'],
+    images: [
+      'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&auto=format&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1484704849700-f032a568e944?w=800&auto=format&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=800&auto=format&fit=crop&q=80'
+    ],
+    description:
+      'Immerse yourself in high-fidelity audio with proprietary active noise cancellation, ambient spatial sound, and 45-hour battery endurance. Features memory-foam ear cushions and dual beamforming mics for crystal-clear calls.',
+    specs: [
+      { label: 'Battery Life', value: 'Up to 45 hours' },
+      { label: 'Connectivity', value: 'Bluetooth 5.3 & 3.5mm Aux' },
+      { label: 'Noise Cancellation', value: 'Hybrid ANC with 3 levels' },
+      { label: 'Weight', value: '250g' }
+    ]
+  },
+  {
+    id: 2,
+    name: 'AeroPulse Ultralight Running Sneakers',
+    category: 'Footwear',
+    price: 129.50,
+    originalPrice: 160.00,
+    rating: 4.7,
+    reviewsCount: 312,
+    badge: 'Trending',
+    inStock: true,
+    colors: ['#1e293b', '#ef4444', '#10b981'],
+    colorNames: ['Obsidian Black', 'Solar Red', 'Hyper Mint'],
+    sizes: ['US 8', 'US 9', 'US 10', 'US 11'],
+    images: [
+      'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800&auto=format&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=800&auto=format&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=800&auto=format&fit=crop&q=80'
+    ],
+    description:
+      'Engineered for maximum kinetic energy return and breathable comfort over ultra marathons or daily pavement strides. The carbon composite plate provides unmatched propulsion.',
+    specs: [
+      { label: 'Drop', value: '8mm' },
+      { label: 'Upper', value: 'Recycled Monomesh' },
+      { label: 'Outsole', value: 'High-traction Vibram rubber' }
+    ]
+  },
+  {
+    id: 3,
+    name: 'Chronos Minimalist Sapphire Automatic Watch',
+    category: 'Accessories',
+    price: 349.00,
+    originalPrice: 420.00,
+    rating: 4.9,
+    reviewsCount: 189,
+    badge: 'Bestseller',
+    inStock: true,
+    colors: ['#18181b', '#d4af37'],
+    colorNames: ['Matte Noir', 'Champagne Gold'],
+    sizes: ['40mm Case'],
+    images: [
+      'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&auto=format&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1524805444758-089113d48a6d?w=800&auto=format&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1533139502658-0198f920d8e8?w=800&auto=format&fit=crop&q=80'
+    ],
+    description:
+      'Designed with Swedish minimalism in mind. Featuring a scratch-resistant sapphire crystal lens, Japanese Miyota automatic movement, and a hand-stitched Italian vegetable-tanned leather strap.',
+    specs: [
+      { label: 'Case Material', value: '316L Surgical Grade Steel' },
+      { label: 'Water Resistance', value: '5 ATM (50 meters)' },
+      { label: 'Movement', value: '24-Jewel Self-Winding Automatic' }
+    ]
+  },
+  {
+    id: 4,
+    name: 'Terraform Merino Heavyweight Overshirt',
+    category: 'Apparel',
+    price: 89.99,
+    originalPrice: 119.99,
+    rating: 4.6,
+    reviewsCount: 94,
+    badge: 'Deal of the Day',
+    dealEndsInHours: 4,
+    inStock: true,
+    colors: ['#475569', '#3f3f46', '#78350f'],
+    colorNames: ['Heather Slate', 'Charcoal', 'Caramel Ochre'],
+    sizes: ['S', 'M', 'L', 'XL'],
+    images: [
+      'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=800&auto=format&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=800&auto=format&fit=crop&q=80'
+    ],
+    description:
+      'Woven from 100% sustainably sourced extra-fine merino wool. Naturally moisture-wicking, odor-resistant, and climate regulating for crisp morning commutes or casual weekend wear.',
+    specs: [
+      { label: 'Composition', value: '100% Extrafine Merino Wool' },
+      { label: 'Care', value: 'Machine wash cold delicate, lay flat to dry' }
+    ]
+  },
+  {
+    id: 5,
+    name: 'Lumina Smart Ambient Desk Lamp & Qi Charger',
+    category: 'Home & Living',
+    price: 79.00,
+    originalPrice: 99.00,
+    rating: 4.5,
+    reviewsCount: 142,
+    badge: 'Smart Tech',
+    inStock: true,
+    colors: ['#f8fafc', '#1e293b'],
+    colorNames: ['Pure White', 'Space Gray'],
+    sizes: ['One Size'],
+    images: [
+      'https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=800&auto=format&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1534349762230-e0cadf78f5da?w=800&auto=format&fit=crop&q=80'
+    ],
+    description:
+      'Elevate your desk sanctuary. Features circadian-rhythm adaptive LED spectrum, 15W fast wireless base charging, and smooth touch slider dimming.',
+    specs: [
+      { label: 'Color Temp', value: '2700K - 6500K Tunable' },
+      { label: 'Charging Output', value: '15W MagSafe/Qi Compatible' }
+    ]
+  },
+  {
+    id: 6,
+    name: 'Artisan Vegetable Tanned Commuter Backpack',
+    category: 'Accessories',
+    price: 179.99,
+    originalPrice: 219.00,
+    rating: 4.85,
+    reviewsCount: 220,
+    badge: 'Editor Pick',
+    inStock: false,
+    colors: ['#451a03', '#1c1917'],
+    colorNames: ['Vintage Chestnut', 'Pitch Black'],
+    sizes: ['22L Capacity'],
+    images: [
+      'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=800&auto=format&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1622560480605-d83c853bc5c3?w=800&auto=format&fit=crop&q=80'
+    ],
+    description:
+      'Handcrafted water-resistant canvas with full-grain leather trims. Dedicated shockproof 16" laptop pocket, hidden passport sleeve, and ergonomic luggage pass-through.',
+    specs: [
+      { label: 'Capacity', value: '22 Liters' },
+      { label: 'Laptop Sleeve', value: 'Fits up to 16-inch MacBook Pro' }
+    ]
+  }
+];
+
+const CATEGORIES = ['All', 'Electronics', 'Footwear', 'Accessories', 'Apparel', 'Home & Living'];
+
+export default function App() {
+  const [currentView, setCurrentView] = useState('home'); // 'home' | 'plp' | 'pdp' | 'cart' | 'checkout'
+  const [selectedProductId, setSelectedProductId] = useState(1);
+  const [cart, setCart] = useState([
+    {
+      productId: 1,
+      name: 'Aura SoundPro Wireless Noise-Cancelling Headphones',
+      price: 249.99,
+      image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&auto=format&fit=crop&q=80',
+      quantity: 1,
+      selectedColor: 'Midnight Slate',
+      selectedSize: 'Standard'
+    }
+  ]);
+  const [wishlist, setWishlist] = useState([2]);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [quickViewProduct, setQuickViewProduct] = useState(null);
+  const [isAuthOpen, setIsAuthOpen] = useState(false);
+  const [authMode, setAuthMode] = useState('signin'); // 'signin' | 'signup'
+  const [currentUser, setCurrentUser] = useState(null);
+  const [toastMessage, setToastMessage] = useState(null);
+  const [appliedPromo, setAppliedPromo] = useState({ code: '', discountPercent: 0 });
+
+  // Toast trigger utility
+  const showToast = (message) => {
+    setToastMessage(message);
+    setTimeout(() => {
+      setToastMessage(null);
+    }, 3200);
+  };
+
+  // Switch to PDP directly
+  const navigateToProduct = (id) => {
+    setSelectedProductId(id);
+    setCurrentView('pdp');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // Add item to cart
+  const addToCart = (product, quantity = 1, color = null, size = null) => {
+    const chosenColor = color || product.colorNames?.[0] || 'Default';
+    const chosenSize = size || product.sizes?.[0] || 'Standard';
+
+    setCart((prev) => {
+      const existingIndex = prev.findIndex(
+        (item) => item.productId === product.id && item.selectedColor === chosenColor && item.selectedSize === chosenSize
+      );
+
+      if (existingIndex > -1) {
+        const nextCart = [...prev];
+        nextCart[existingIndex].quantity += quantity;
+        return nextCart;
       }
-    }
-  </script>
 
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: #f1f3f6;
-    }
-    .no-scrollbar::-webkit-scrollbar {
-      display: none;
-    }
-    .no-scrollbar {
-      -ms-overflow-style: none;
-      scrollbar-width: none;
-    }
-    .fk-assured-tag {
-      background: linear-gradient(90deg, #1846b0 0%, #2874f0 100%);
-      color: #ffe500;
-      font-style: italic;
-      font-weight: 800;
-    }
-    @keyframes pulseSoft {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.75; }
-    }
-    .pulse-soft {
-      animation: pulseSoft 2s infinite ease-in-out;
-    }
-    /* Toast styles */
-    #toastContainer {
-      position: fixed;
-      bottom: 75px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 100;
-    }
-  </style>
-</head>
-<body class="text-slate-800 antialiased min-h-screen pb-20 md:pb-12 flex flex-col justify-between">
+      return [
+        ...prev,
+        {
+          productId: product.id,
+          name: product.name,
+          price: product.price,
+          image: product.images[0],
+          quantity,
+          selectedColor: chosenColor,
+          selectedSize: chosenSize
+        }
+      ];
+    });
 
-  <!-- Top Blue Flipkart Header -->
-  <header class="sticky top-0 z-40 bg-fkBlue text-white shadow-md">
-    <div class="max-w-7xl mx-auto px-3 sm:px-6 py-2.5 sm:py-3 flex items-center justify-between gap-2 sm:gap-4">
-      
-      <!-- Logo Section -->
-      <a href="#" onclick="filterCategory('all'); return false;" class="flex flex-col items-start leading-none group flex-shrink-0">
-        <span class="text-xl sm:text-2xl font-black italic tracking-wide text-white group-hover:opacity-95 flex items-center">
-          Flipkart
-        </span>
-        <span class="text-[10px] sm:text-[11px] italic font-semibold text-slate-100 flex items-center gap-0.5">
-          Explore <span class="text-fkYellow font-bold flex items-center">Plus <i class="fa-solid fa-plus text-[9px] ml-0.5"></i></span>
-        </span>
-      </a>
+    showToast(`Added "${product.name}" to your bag!`);
+  };
 
-      <!-- Search Bar with Live Dropdown -->
-      <div class="flex-1 max-w-2xl relative">
-        <div class="relative flex items-center">
-          <input 
-            type="text" 
-            id="searchInput"
-            placeholder="Search for Products, Brands and More" 
-            autocomplete="off"
-            class="w-full pl-4 pr-10 py-2 sm:py-2.5 rounded-sm sm:rounded-md bg-white text-slate-800 text-xs sm:text-sm placeholder-slate-400 focus:outline-none shadow-inner"
-            oninput="handleSearch(this.value)"
-            onfocus="showSearchDropdown()"
-          />
-          <button id="searchBtn" class="absolute right-3 text-fkBlue text-sm sm:text-base hover:opacity-80">
-            <i class="fa-solid fa-magnifying-glass"></i>
+  // Toggle wishlist
+  const toggleWishlist = (productId) => {
+    if (wishlist.includes(productId)) {
+      setWishlist(wishlist.filter((id) => id !== productId));
+      showToast('Item removed from your favorites.');
+    } else {
+      setWishlist([...wishlist, productId]);
+      showToast('Added to your favorite wishlist!');
+    }
+  };
+
+  // Compute Cart Statistics
+  const cartSubtotal = useMemo(() => {
+    return cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
+  }, [cart]);
+
+  const discountAmount = useMemo(() => {
+    return (cartSubtotal * appliedPromo.discountPercent) / 100;
+  }, [cartSubtotal, appliedPromo]);
+
+  const shippingCost = cartSubtotal > 150 || cartSubtotal === 0 ? 0 : 15.0;
+  const estimatedTax = (cartSubtotal - discountAmount) * 0.08;
+  const grandTotal = Math.max(0, cartSubtotal - discountAmount + shippingCost + estimatedTax);
+  const cartItemCount = cart.reduce((acc, item) => acc + item.quantity, 0);
+
+  return (
+    <div className="min-h-screen bg-slate-50 text-slate-900 font-sans flex flex-col antialiased selection:bg-indigo-600 selection:text-white">
+      {/* Toast Notification Container */}
+      {toastMessage && (
+        <div className="fixed bottom-6 right-6 z-50 flex items-center gap-3 bg-slate-950 text-white px-5 py-3.5 rounded-2xl shadow-2xl border border-slate-800 animate-bounce duration-300">
+          <Sparkles className="w-5 h-5 text-amber-400 shrink-0" />
+          <span className="text-sm font-medium tracking-wide">{toastMessage}</span>
+          <button onClick={() => setToastMessage(null)} className="ml-2 text-slate-400 hover:text-white">
+            <X className="w-4 h-4" />
           </button>
         </div>
+      )}
 
-        <!-- Autocomplete Suggestions Dropdown -->
-        <div id="searchSuggestions" class="hidden absolute top-full left-0 right-0 mt-1 bg-white rounded-md shadow-2xl border border-slate-200 overflow-hidden z-50 text-slate-800 text-xs sm:text-sm">
-          <div class="p-2 bg-slate-50 border-b border-slate-100 text-[11px] font-semibold text-slate-500 uppercase tracking-wider flex justify-between">
-            <span>Trending Searches</span>
-            <button onclick="hideSearchDropdown()" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark"></i></button>
-          </div>
-          <div id="suggestionsList" class="divide-y divide-slate-100 max-h-64 overflow-y-auto">
-            <!-- Populated via JS -->
-          </div>
-        </div>
-      </div>
+      {/* GLOBAL NAVBAR */}
+      <Navbar
+        currentView={currentView}
+        setCurrentView={setCurrentView}
+        cartCount={cartItemCount}
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
+        onOpenAuth={() => setIsAuthOpen(true)}
+        currentUser={currentUser}
+        onLogout={() => {
+          setCurrentUser(null);
+          showToast('You have signed out.');
+        }}
+      />
 
-      <!-- Action Buttons (Desktop) -->
-      <div class="flex items-center gap-3 sm:gap-6 text-sm font-semibold flex-shrink-0">
-        
-        <!-- Login / User Button -->
-        <button onclick="toggleLoginModal()" class="hidden md:inline-flex items-center gap-1.5 px-6 py-1.5 bg-white text-fkBlue rounded-sm font-bold shadow-sm hover:bg-slate-100 transition-colors">
-          <i class="fa-regular fa-user text-xs"></i> Login
-        </button>
+      {/* MAIN VIEW ROUTING */}
+      <main className="flex-1 w-full">
+        {currentView === 'home' && (
+          <HomePage
+            onShopNow={() => setCurrentView('plp')}
+            onSelectProduct={navigateToProduct}
+            onAddToCart={addToCart}
+            wishlist={wishlist}
+            toggleWishlist={toggleWishlist}
+            setQuickViewProduct={setQuickViewProduct}
+          />
+        )}
 
-        <!-- Become a Seller Link -->
-        <a href="#seller" onclick="showToast('Seller registration portal opens soon!'); return false;" class="hidden lg:inline text-white hover:text-fkYellow text-xs font-medium">
-          Become a Seller
-        </a>
+        {currentView === 'plp' && (
+          <ProductListingPage
+            products={MOCK_PRODUCTS}
+            onSelectProduct={navigateToProduct}
+            onAddToCart={addToCart}
+            wishlist={wishlist}
+            toggleWishlist={toggleWishlist}
+            setQuickViewProduct={setQuickViewProduct}
+            searchQuery={searchQuery}
+          />
+        )}
 
-        <!-- Wishlist Button -->
-        <button onclick="showWishlistModal()" class="hidden sm:inline-flex items-center gap-1.5 text-white hover:text-fkYellow transition-colors relative" title="Wishlist">
-          <i class="fa-regular fa-heart text-base sm:text-lg"></i>
-          <span class="hidden md:inline text-xs font-semibold">Wishlist</span>
-          <span id="wishlistBadge" class="hidden absolute -top-1.5 -right-2 bg-fkYellow text-fkBlue text-[10px] font-black w-4 h-4 rounded-full flex items-center justify-center">0</span>
-        </button>
+        {currentView === 'pdp' && (
+          <ProductDetailPage
+            productId={selectedProductId}
+            onAddToCart={addToCart}
+            onBuyNow={(prod, qty, clr, sz) => {
+              addToCart(prod, qty, clr, sz);
+              setCurrentView('checkout');
+            }}
+            wishlist={wishlist}
+            toggleWishlist={toggleWishlist}
+            onBackToCatalog={() => setCurrentView('plp')}
+          />
+        )}
 
-        <!-- Cart Button -->
-        <button onclick="toggleCartDrawer(true)" class="flex items-center gap-2 text-white hover:text-fkYellow transition-colors relative" aria-label="Shopping Cart">
-          <div class="relative">
-            <i class="fa-solid fa-cart-shopping text-base sm:text-lg"></i>
-            <span id="cartBadge" class="absolute -top-2 -right-2 bg-fkYellow text-fkBlue font-black text-[10px] w-4 h-4 rounded-full flex items-center justify-center shadow-sm">0</span>
-          </div>
-          <span class="hidden sm:inline text-sm font-semibold">Cart</span>
-        </button>
+        {currentView === 'cart' && (
+          <CartPage
+            cart={cart}
+            setCart={setCart}
+            subtotal={cartSubtotal}
+            discountAmount={discountAmount}
+            shippingCost={shippingCost}
+            tax={estimatedTax}
+            grandTotal={grandTotal}
+            appliedPromo={appliedPromo}
+            setAppliedPromo={setAppliedPromo}
+            onProceedCheckout={() => setCurrentView('checkout')}
+            onContinueShopping={() => setCurrentView('plp')}
+            showToast={showToast}
+          />
+        )}
 
-      </div>
+        {currentView === 'checkout' && (
+          <CheckoutPage
+            cart={cart}
+            grandTotal={grandTotal}
+            subtotal={cartSubtotal}
+            discountAmount={discountAmount}
+            shippingCost={shippingCost}
+            tax={estimatedTax}
+            onOrderComplete={() => {
+              setCart([]);
+              setCurrentView('home');
+              showToast('🎉 Order #AUR-8291 confirmed! Check your email.');
+            }}
+            onBackToCart={() => setCurrentView('cart')}
+          />
+        )}
+      </main>
+
+      {/* QUICK VIEW MODAL */}
+      {quickViewProduct && (
+        <QuickViewModal
+          product={quickViewProduct}
+          onClose={() => setQuickViewProduct(null)}
+          onAddToCart={addToCart}
+          onViewFullDetails={(id) => {
+            setQuickViewProduct(null);
+            navigateToProduct(id);
+          }}
+        />
+      )}
+
+      {/* AUTH MODAL (LOGIN & SIGN UP) */}
+      {isAuthOpen && (
+        <AuthModal
+          mode={authMode}
+          setMode={setAuthMode}
+          onClose={() => setIsAuthOpen(false)}
+          onSuccess={(userData) => {
+            setCurrentUser(userData);
+            setIsAuthOpen(false);
+            showToast(`Welcome back, ${userData.name}!`);
+          }}
+        />
+      )}
+
+      {/* GLOBAL FOOTER */}
+      <Footer onNavigate={setCurrentView} />
     </div>
-  </header>
+  );
+}
 
-  <!-- Categories Sub-Navbar (Horizontal scrolling on mobile) -->
-  <nav class="bg-white border-b border-slate-200 sticky top-[52px] sm:top-[57px] z-30 shadow-sm">
-    <div class="max-w-7xl mx-auto px-2 sm:px-4">
-      <div class="flex items-center justify-start sm:justify-between overflow-x-auto no-scrollbar py-2 sm:py-3 gap-6 sm:gap-8 text-center text-xs font-medium text-slate-700">
-        
-        <button onclick="filterCategory('all')" class="category-tab flex-shrink-0 flex flex-col items-center gap-1 group text-fkBlue font-bold" data-cat="all">
-          <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-blue-50 text-fkBlue flex items-center justify-center text-base sm:text-lg group-hover:scale-110 transition-transform">
-            <i class="fa-solid fa-border-all"></i>
-          </div>
-          <span>All Deals</span>
-        </button>
+function Navbar({ currentView, setCurrentView, cartCount, searchQuery, setSearchQuery, onOpenAuth, currentUser, onLogout }) {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-        <button onclick="filterCategory('mobiles')" class="category-tab flex-shrink-0 flex flex-col items-center gap-1 group" data-cat="mobiles">
-          <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center text-base sm:text-lg group-hover:scale-110 transition-transform">
-            <i class="fa-solid fa-mobile-screen-button"></i>
-          </div>
-          <span>Mobiles</span>
-        </button>
-
-        <button onclick="filterCategory('electronics')" class="category-tab flex-shrink-0 flex flex-col items-center gap-1 group" data-cat="electronics">
-          <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-amber-50 text-amber-600 flex items-center justify-center text-base sm:text-lg group-hover:scale-110 transition-transform">
-            <i class="fa-solid fa-laptop"></i>
-          </div>
-          <span>Electronics</span>
-        </button>
-
-        <button onclick="filterCategory('fashion')" class="category-tab flex-shrink-0 flex flex-col items-center gap-1 group" data-cat="fashion">
-          <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-pink-50 text-pink-600 flex items-center justify-center text-base sm:text-lg group-hover:scale-110 transition-transform">
-            <i class="fa-solid fa-shirt"></i>
-          </div>
-          <span>Fashion</span>
-        </button>
-
-        <button onclick="filterCategory('home')" class="category-tab flex-shrink-0 flex flex-col items-center gap-1 group" data-cat="home">
-          <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-teal-50 text-teal-600 flex items-center justify-center text-base sm:text-lg group-hover:scale-110 transition-transform">
-            <i class="fa-solid fa-couch"></i>
-          </div>
-          <span>Home & Living</span>
-        </button>
-
-        <button onclick="filterCategory('appliances')" class="category-tab flex-shrink-0 flex flex-col items-center gap-1 group" data-cat="appliances">
-          <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-purple-50 text-purple-600 flex items-center justify-center text-base sm:text-lg group-hover:scale-110 transition-transform">
-            <i class="fa-solid fa-tv"></i>
-          </div>
-          <span>Appliances</span>
-        </button>
-
-        <button onclick="filterCategory('beauty')" class="category-tab flex-shrink-0 flex flex-col items-center gap-1 group" data-cat="beauty">
-          <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-rose-50 text-rose-600 flex items-center justify-center text-base sm:text-lg group-hover:scale-110 transition-transform">
-            <i class="fa-solid fa-spray-can-sparkles"></i>
-          </div>
-          <span>Beauty & Toys</span>
-        </button>
-
+  return (
+    <header className="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200">
+      {/* Top Banner Bar */}
+      <div className="bg-indigo-600 text-white text-xs py-2 px-4 text-center font-medium flex items-center justify-center gap-2">
+        <Sparkles className="w-3.5 h-3.5 text-amber-300" />
+        <span>Fall Flash Sale: Use code <strong>AURA20</strong> for 20% off all modern gear! Free global shipping over $150.</span>
       </div>
-    </div>
-  </nav>
 
-  <!-- Main Store Content Body -->
-  <main class="max-w-7xl mx-auto px-2 sm:px-4 py-3 sm:py-5 w-full space-y-4">
-
-    <!-- Promotional Hero Slider -->
-    <div class="relative rounded-lg overflow-hidden shadow-fkCard bg-white">
-      <div id="carouselWrapper" class="relative w-full h-44 sm:h-64 md:h-80 overflow-hidden">
-        
-        <!-- Slide 1 -->
-        <div class="carousel-slide absolute inset-0 transition-opacity duration-700 opacity-100 flex items-center justify-between px-6 sm:px-12 bg-gradient-to-r from-blue-700 via-fkBlue to-cyan-500 text-white">
-          <div class="space-y-2 sm:space-y-4 max-w-md">
-            <span class="inline-block px-2.5 py-1 rounded bg-fkYellow text-fkBlue font-black text-[10px] sm:text-xs tracking-wider uppercase">
-              Big Billion Days Special
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+        {/* Brand Logo */}
+        <div
+          onClick={() => setCurrentView('home')}
+          className="flex items-center gap-2.5 cursor-pointer group select-none"
+        >
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-violet-500 flex items-center justify-center text-white shadow-md shadow-indigo-200 group-hover:scale-105 transition-transform">
+            <ShoppingBag className="w-5 h-5" />
+          </div>
+          <div>
+            <span className="text-2xl font-black tracking-tight text-slate-900 group-hover:text-indigo-600 transition-colors">
+              Aura<span className="text-indigo-600">Store</span>
             </span>
-            <h2 class="text-xl sm:text-3xl md:text-4xl font-extrabold leading-tight">
-              Flagship Smartphones <br><span class="text-fkYellow">Up to 45% OFF</span>
-            </h2>
-            <p class="text-xs sm:text-sm text-blue-100 hidden sm:block">Exchange offers, no-cost EMI, and instant bank discounts on Top Brands.</p>
-            <button onclick="filterCategory('mobiles')" class="px-4 sm:px-6 py-2 rounded-sm bg-white text-fkBlue font-bold text-xs sm:text-sm shadow-md hover:bg-slate-100 transition-transform hover:scale-105">
-              Explore Deals <i class="fa-solid fa-arrow-right ml-1"></i>
+          </div>
+        </div>
+
+        {/* Primary Desktop Nav Links */}
+        <nav className="hidden md:flex items-center space-x-8 text-sm font-semibold text-slate-600">
+          <button
+            onClick={() => setCurrentView('home')}
+            className={`transition-colors hover:text-indigo-600 ${currentView === 'home' ? 'text-indigo-600 font-bold' : ''}`}
+          >
+            Home
+          </button>
+          <button
+            onClick={() => setCurrentView('plp')}
+            className={`transition-colors hover:text-indigo-600 ${currentView === 'plp' ? 'text-indigo-600 font-bold' : ''}`}
+          >
+            Shop Catalog
+          </button>
+          <button
+            onClick={() => setCurrentView('plp')}
+            className="transition-colors hover:text-indigo-600 text-rose-500 font-semibold flex items-center gap-1"
+          >
+            Deals <Percent className="w-3.5 h-3.5 inline" />
+          </button>
+        </nav>
+
+        {/* Search Bar Input */}
+        <div className="hidden lg:flex items-center relative w-72">
+          <Search className="w-4 h-4 absolute left-3.5 text-slate-400" />
+          <input
+            type="text"
+            placeholder="Search audio, apparel, tech..."
+            value={searchQuery}
+            onChange={(e) => {
+              setSearchQuery(e.target.value);
+              if (currentView !== 'plp') setCurrentView('plp');
+            }}
+            className="w-full bg-slate-100 pl-10 pr-4 py-2 rounded-full text-xs font-medium placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:bg-white transition-all border border-transparent focus:border-indigo-200"
+          />
+        </div>
+
+        {/* Action Buttons: Account & Cart */}
+        <div className="flex items-center gap-3">
+          {currentUser ? (
+            <div className="relative group">
+              <button className="flex items-center gap-2 p-2 rounded-xl text-slate-700 hover:bg-slate-100 transition-colors">
+                <div className="w-8 h-8 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center font-bold text-xs uppercase">
+                  {currentUser.name.slice(0, 2)}
+                </div>
+                <span className="text-xs font-bold hidden sm:inline">{currentUser.name}</span>
+              </button>
+              <div className="absolute right-0 top-full pt-1 hidden group-hover:block w-40">
+                <div className="bg-white rounded-xl shadow-xl border border-slate-100 py-1 text-xs">
+                  <button onClick={onLogout} className="w-full px-4 py-2 text-left text-rose-600 hover:bg-rose-50 font-semibold">
+                    Sign Out
+                  </button>
+                </div>
+              </div>
+            </div>
+          ) : (
+            <button
+              onClick={onOpenAuth}
+              className="flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold text-slate-700 hover:text-indigo-600 hover:bg-slate-100 rounded-xl transition-all"
+            >
+              <User className="w-4 h-4" />
+              <span className="hidden sm:inline">Sign In</span>
             </button>
-          </div>
-          <div class="hidden sm:flex items-center justify-center pr-4">
-            <i class="fa-solid fa-mobile-screen text-7xl md:text-9xl text-white/30 drop-shadow-xl animate-pulse"></i>
-          </div>
-        </div>
+          )}
 
-        <!-- Slide 2 -->
-        <div class="carousel-slide absolute inset-0 transition-opacity duration-700 opacity-0 flex items-center justify-between px-6 sm:px-12 bg-gradient-to-r from-purple-800 via-indigo-700 to-pink-600 text-white">
-          <div class="space-y-2 sm:space-y-4 max-w-md">
-            <span class="inline-block px-2.5 py-1 rounded bg-pink-300 text-purple-950 font-black text-[10px] sm:text-xs tracking-wider uppercase">
-              Mega Fashion Fest
-            </span>
-            <h2 class="text-xl sm:text-3xl md:text-4xl font-extrabold leading-tight">
-              Trends & Footwear <br><span class="text-pink-200">50 - 80% OFF</span>
-            </h2>
-            <p class="text-xs sm:text-sm text-purple-100 hidden sm:block">Puma, Nike, Allen Solly & Premium ethnic wear collections.</p>
-            <button onclick="filterCategory('fashion')" class="px-4 sm:px-6 py-2 rounded-sm bg-white text-purple-900 font-bold text-xs sm:text-sm shadow-md hover:bg-slate-100 transition-transform hover:scale-105">
-              Shop Fashion <i class="fa-solid fa-arrow-right ml-1"></i>
-            </button>
-          </div>
-          <div class="hidden sm:flex items-center justify-center pr-4">
-            <i class="fa-solid fa-bag-shopping text-7xl md:text-9xl text-white/30 drop-shadow-xl"></i>
-          </div>
-        </div>
+          {/* Cart Icon & Badge */}
+          <button
+            onClick={() => setCurrentView('cart')}
+            className="relative p-2.5 rounded-xl bg-slate-100 hover:bg-indigo-50 text-slate-800 hover:text-indigo-600 transition-all"
+            aria-label="View Cart"
+          >
+            <ShoppingCart className="w-5 h-5" />
+            {cartCount > 0 && (
+              <span className="absolute -top-1.5 -right-1.5 bg-indigo-600 text-white text-[11px] font-black w-5 h-5 rounded-full flex items-center justify-center shadow-md animate-pulse">
+                {cartCount}
+              </span>
+            )}
+          </button>
 
-        <!-- Slide 3 -->
-        <div class="carousel-slide absolute inset-0 transition-opacity duration-700 opacity-0 flex items-center justify-between px-6 sm:px-12 bg-gradient-to-r from-amber-600 via-orange-600 to-rose-700 text-white">
-          <div class="space-y-2 sm:space-y-4 max-w-md">
-            <span class="inline-block px-2.5 py-1 rounded bg-amber-200 text-amber-950 font-black text-[10px] sm:text-xs tracking-wider uppercase">
-              Best of Electronics
-            </span>
-            <h2 class="text-xl sm:text-3xl md:text-4xl font-extrabold leading-tight">
-              Laptops & Audio gear <br><span class="text-amber-200">From ₹999</span>
-            </h2>
-            <p class="text-xs sm:text-sm text-orange-100 hidden sm:block">Noise-cancelling headphones, gaming rigs, and high-speed SSDs.</p>
-            <button onclick="filterCategory('electronics')" class="px-4 sm:px-6 py-2 rounded-sm bg-white text-orange-900 font-bold text-xs sm:text-sm shadow-md hover:bg-slate-100 transition-transform hover:scale-105">
-              Grab Audio & Tech <i class="fa-solid fa-arrow-right ml-1"></i>
-            </button>
-          </div>
-          <div class="hidden sm:flex items-center justify-center pr-4">
-            <i class="fa-solid fa-headphones-simple text-7xl md:text-9xl text-white/30 drop-shadow-xl"></i>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Carousel Arrows -->
-      <button onclick="prevSlide()" class="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-12 bg-white/80 hover:bg-white text-slate-800 rounded-r shadow-md flex items-center justify-center focus:outline-none transition-colors">
-        <i class="fa-solid fa-chevron-left text-sm"></i>
-      </button>
-      <button onclick="nextSlide()" class="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-12 bg-white/80 hover:bg-white text-slate-800 rounded-l shadow-md flex items-center justify-center focus:outline-none transition-colors">
-        <i class="fa-solid fa-chevron-right text-sm"></i>
-      </button>
-    </div>
-
-    <!-- Deals of the Day Flash Header with Countdown -->
-    <div class="bg-white rounded-lg p-3 sm:p-4 shadow-fkCard flex flex-col sm:flex-row sm:items-center justify-between gap-3 border border-slate-100">
-      <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-full bg-rose-50 text-rose-600 flex items-center justify-center text-lg">
-          <i class="fa-solid fa-bolt animate-pulse"></i>
-        </div>
-        <div>
-          <h2 class="text-base sm:text-lg font-bold text-slate-900 flex items-center gap-2">
-            Deals of the Day 
-            <span class="text-xs font-semibold px-2 py-0.5 rounded bg-rose-100 text-rose-700">LIMITED PERIOD</span>
-          </h2>
-          <div class="text-xs text-slate-500 flex items-center gap-1.5 mt-0.5">
-            <i class="fa-regular fa-clock text-slate-400"></i>
-            <span>Ends in:</span>
-            <span id="countdownTimer" class="font-mono font-bold text-slate-800 text-xs bg-slate-100 px-2 py-0.5 rounded">05h : 24m : 18s</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Filter / Sort Controls Bar -->
-      <div class="flex items-center gap-2 self-end sm:self-center">
-        <label for="sortBySelect" class="text-xs text-slate-500 font-medium hidden sm:inline">Sort By:</label>
-        <select id="sortBySelect" onchange="applySorting(this.value)" class="text-xs bg-slate-50 border border-slate-200 rounded px-2.5 py-1.5 focus:outline-none focus:ring-1 focus:ring-fkBlue font-medium text-slate-700">
-          <option value="popularity">Popularity</option>
-          <option value="priceLow">Price: Low to High</option>
-          <option value="priceHigh">Price: High to Low</option>
-          <option value="discount">Biggest Discount</option>
-        </select>
-        <button onclick="resetFilters()" class="text-xs text-fkBlue hover:underline font-semibold px-2">Reset</button>
-      </div>
-    </div>
-
-    <!-- Active Filter Chips -->
-    <div id="filterStatus" class="hidden flex items-center justify-between bg-blue-50/70 border border-blue-100 px-3 py-2 rounded text-xs text-fkBlue font-medium">
-      <span id="filterStatusText">Showing results for All Categories</span>
-      <button onclick="filterCategory('all')" class="text-slate-500 hover:text-rose-600 font-bold ml-2">Clear Filter &times;</button>
-    </div>
-
-    <!-- Products Showcase Grid -->
-    <section>
-      <div id="productsGrid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2.5 sm:gap-3">
-        <!-- Products populated dynamically by renderProducts() -->
-      </div>
-
-      <!-- No Products Found Message -->
-      <div id="noProductsFound" class="hidden bg-white rounded-lg p-12 text-center shadow-fkCard border border-slate-100">
-        <i class="fa-solid fa-box-open text-5xl text-slate-300 mb-3"></i>
-        <h3 class="text-base font-bold text-slate-800">No matching products found</h3>
-        <p class="text-xs text-slate-500 mt-1">Try checking your spelling or use more general terms.</p>
-        <button onclick="filterCategory('all')" class="mt-4 px-4 py-2 bg-fkBlue text-white text-xs font-bold rounded shadow-sm">View All Deals</button>
-      </div>
-    </section>
-
-    <!-- Why Shop on Flipkart Features Strip -->
-    <section class="bg-white rounded-lg p-4 sm:p-6 shadow-fkCard border border-slate-100">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-        <div class="flex flex-col items-center p-2">
-          <i class="fa-solid fa-truck-fast text-2xl text-fkBlue mb-2"></i>
-          <h4 class="text-xs sm:text-sm font-bold text-slate-800">Free & Fast Delivery</h4>
-          <p class="text-[11px] text-slate-500 mt-0.5">On orders above ₹499 with Plus</p>
-        </div>
-        <div class="flex flex-col items-center p-2">
-          <i class="fa-solid fa-rotate-left text-2xl text-fkGreen mb-2"></i>
-          <h4 class="text-xs sm:text-sm font-bold text-slate-800">7-Day Easy Returns</h4>
-          <p class="text-[11px] text-slate-500 mt-0.5">Hassle-free doorstep pickup</p>
-        </div>
-        <div class="flex flex-col items-center p-2">
-          <i class="fa-solid fa-shield-halved text-2xl text-amber-500 mb-2"></i>
-          <h4 class="text-xs sm:text-sm font-bold text-slate-800">100% Authentic</h4>
-          <p class="text-[11px] text-slate-500 mt-0.5">Verified Flipkart Assured sellers</p>
-        </div>
-        <div class="flex flex-col items-center p-2">
-          <i class="fa-solid fa-credit-card text-2xl text-rose-500 mb-2"></i>
-          <h4 class="text-xs sm
+          {/* Mobile hamburger menu button */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="md:hidden p-2 text-slate-70
