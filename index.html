@@ -1,0 +1,238 @@
+            <p>Strict appointment adherence ensures you spend your time getting treated, not waiting.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon"><i class="fas fa-microscope"></i></div>
+          <div class="feature-text">
+            <h3>Advanced Technology</h3>
+            <p>Digital intraoral scanners and low-radiation digital X-rays for precise diagnosis.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon"><i class="fas fa-hand-holding-heart"></i></div>
+          <div class="feature-text">
+            <h3>Painless Dentistry</h3>
+            <p>Comfort-first care with gentle numbing techniques and anxious-patient support.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon"><i class="fas fa-file-invoice-dollar"></i></div>
+          <div class="feature-text">
+            <h3>Upfront Pricing</h3>
+            <p>Complete cost clarity before treatment starts—no surprise charges or hidden fees.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPOINTMENT FORM -->
+  <section id="appointment">
+    <div class="container">
+      <div class="appointment">
+        <div class="appointment-grid">
+          <div>
+            <div class="section-subhead">Book a Visit</div>
+            <h2>Schedule Your Appointment</h2>
+            <form id="bookingForm" onsubmit="handleFormSubmit(event)">
+              <div class="form-group">
+                <label for="fullName">Full Name</label>
+                <input type="text" id="fullName" name="name" placeholder="e.g. Rahul Verma" required>
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210" pattern="[0-9+ -]{10,14}" required>
+              </div>
+              <div class="form-group">
+                <label for="service">Select Treatment</label>
+                <select id="service" name="service" required>
+                  <option value="" disabled selected>Choose a treatment...</option>
+                  <option value="cleaning">Teeth Cleaning & Polish</option>
+                  <option value="whitening">Teeth Whitening</option>
+                  <option value="rct">Root Canal Therapy (RCT)</option>
+                  <option value="implants">Dental Implants</option>
+                  <option value="checkup">Routine Consultation / Checkup</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="date">Preferred Date</label>
+                <input type="date" id="date" name="date" required>
+              </div>
+              <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 8px;">
+                <i class="fas fa-calendar-check"></i> Confirm Booking
+              </button>
+              <p class="form-message" id="formMessage">Thank you! Your appointment request has been received. Our team will call you shortly to confirm.</p>
+            </form>
+          </div>
+
+          <div class="appointment-info">
+            <h3>Need urgent dental relief?</h3>
+            <p>We accommodate emergency walk-ins during open clinic hours. Call us directly or message our team on WhatsApp for prompt assistance.</p>
+            <div class="appointment-note">
+              <strong>Clinic Hours:</strong><br>
+              Monday – Saturday: 9:30 AM – 8:00 PM<br>
+              Sunday: 10:00 AM – 2:00 PM
+            </div>
+            <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+              <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">
+                <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+              </a>
+              <a href="tel:+919876543210" class="btn btn-outline">
+                <i class="fas fa-phone"></i> Call Direct
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section id="reviews" style="background: var(--off-white);">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-subhead">Testimonials</div>
+        <h2>What Our Patients Say</h2>
+        <p>Real feedback from patients who trusted us with their smiles.</p>
+      </div>
+      <div class="reviews-grid">
+        <div class="review-card">
+          <div class="review-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="review-text">"I was terrified of getting a root canal, but Dr. Sharma made the entire procedure completely painless. The clinic hygiene is top-notch!"</p>
+          <div class="review-author">— Ananya Sen, New Delhi</div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="review-text">"Very professional and punctual. They explain the costs and procedures upfront without trying to upsell unnecessary work. Highly recommended."</p>
+          <div class="review-author">— Rajesh Kumar, Bengaluru</div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="review-text">"Got in-office whitening done right before my brother's wedding. Noticeable difference in just one session, and zero sensitivity afterward."</p>
+          <div class="review-author">— Priya Mehta, Mumbai</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-subhead">Find Us</div>
+        <h2>Visit Our Clinic</h2>
+      </div>
+      <div class="contact-grid">
+        <div>
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div class="contact-details">
+              <h4>Clinic Address</h4>
+              <p>Suite 204, Green Park Avenue, Near Metro Pillar 12<br>Connaught Place, New Delhi 110001</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+            <div class="contact-details">
+              <h4>Phone</h4>
+              <p><a href="tel:+919876543210">+91 98765 43210</a></p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+            <div class="contact-details">
+              <h4>Email</h4>
+              <p><a href="mailto:care@dentcareclinic.in">care@dentcareclinic.in</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="map-container">
+          <iframe 
+            title="DentCare Clinic Location Map"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14008.114876615568!2d77.2144!3d28.6328!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd37b0493863%3A0x6b1d120a16b088e8!2sConnaught%20Place%2C%20New%20Delhi%2C%20Delhi%20110001!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-logo">
+            <i class="fas fa-tooth"></i>
+            DentCare
+          </div>
+          <p>Delivering high-precision, compassionate dental treatments with international sterilization and safety standards.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Treatments</h4>
+          <ul>
+            <li><a href="#services">Ultrasonic Cleaning</a></li>
+            <li><a href="#services">Teeth Whitening</a></li>
+            <li><a href="#services">Root Canal (RCT)</a></li>
+            <li><a href="#services">Dental Implants</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#reviews">Patient Stories</a></li>
+            <li><a href="#contact">Contact & Map</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h4>Get in Touch</h4>
+          <p><i class="fas fa-phone-alt"></i> +91 98765 43210</p>
+          <p><i class="fas fa-envelope"></i> care@dentcareclinic.in</p>
+          <p><i class="fas fa-clock"></i> Mon–Sat: 9:30 AM – 8:00 PM</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>&copy; 2026 DentCare Clinic. All rights reserved.</div>
+        <div>Designed for clean patient experience &amp; accessibility.</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPT -->
+  <script>
+    // Mobile navigation toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    menuToggle.addEventListener('click', () => {
+      const isExpanded = navLinks.classList.toggle('active');
+      menuToggle.setAttribute('aria-expanded', isExpanded);
+    });
+
+    // Close menu when clicking any nav link on mobile
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        menuToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // Client-side form submission demo handler
+    function handleFormSubmit(event) {
+      event.preventDefault();
+      const formMessage = document.getElementById('formMessage');
+      formMessage.classList.add('success');
+      event.target.reset();
+    }
+  </script>
+</body>
+</html>
